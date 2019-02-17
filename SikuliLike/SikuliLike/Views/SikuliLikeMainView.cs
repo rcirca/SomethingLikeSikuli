@@ -1,4 +1,5 @@
 ﻿using System;
+using SikuliLike.UI.CustomEventArgs;
 using SikuliLike.Views.Interfaces;
 using SikuliLike.Views.Intermediaries;
 
@@ -11,7 +12,7 @@ namespace SikuliLike.Views
             InitializeComponent();
         }
 
-        public event EventHandler AddNewState;
+        public event EventHandler<EventOpenDialogArgs> AddNewState;
         public event EventHandler RemoveState;
         public event EventHandler TempInitialize;
 
@@ -27,7 +28,7 @@ namespace SikuliLike.Views
 
         private void ClickedAddNewState(object pSender, EventArgs pEventArgs)
         {
-            AddNewState(this, pEventArgs);
+            AddNewState?.Invoke(this, new EventOpenDialogArgs(this));
         }
 
         //use only if we have something other than X button to close application

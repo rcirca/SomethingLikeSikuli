@@ -60,7 +60,9 @@
     <Compile Include="Automation\MouseAction.cs" />
     <Compile Include="Automation\MouseController.cs" />
     <Compile Include="Presenters\AddNewNodeDialogPresenter.cs" />
+    <Compile Include="UI\CustomControls\ComboBoxActionItem.cs" />
     <Compile Include="UI\CustomEventArgs\AddStateEventArgs.cs" />
+    <Compile Include="UI\CustomEventArgs\EventOpenDialogArgs.cs" />
     <Compile Include="UI\Models\Dialogs\AddNewNodeDialogModel.cs" />
     <Compile Include="UI\Models\SikuliLikeModel.cs" />
     <Compile Include="Presenters\SikuliLikeMainPresenter.cs" />

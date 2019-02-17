@@ -1,6 +1,8 @@
 ﻿using System;
 using SikuliLike.StateGraph;
+using SikuliLike.UI.CustomEventArgs;
 using SikuliLike.UI.Models;
+using SikuliLike.Views;
 using SikuliLike.Views.Interfaces;
 using WinFormsMvp;
 
@@ -22,9 +24,9 @@ namespace SikuliLike.Presenters
             {
                 StateList =
                 {
-                    new StateNode("1", null),
-                    new StateNode("2", null),
-                    new StateNode("3", null)
+                    new StateNode("Start", null),
+                    new StateNode("Open", null),
+                    new StateNode("Close", null)
                 }
             };
         }
@@ -34,8 +36,16 @@ namespace SikuliLike.Presenters
             throw new NotImplementedException();
         }
 
-        private void OnAddNewState(object sender, EventArgs e)
+        private void OnAddNewState(object sender, EventOpenDialogArgs e)
         {
+            using (var dialog = new AddNewNodeDialogView())
+            {
+                dialog.ShowDialog(e.ParentWindow);
+                switch (dialog.DialogResult)
+                {
+
+                }
+            }
         }
     }
 }
