@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SikuliLike.StateGraph;
 using SikuliLike.UI.CustomControls;
@@ -40,9 +33,9 @@ namespace SikuliLike.Views
         }
         private void BuildComboBoxItems()
         {
-            var list = new List<ComboBoxActionItem>();
-            foreach (var action in (Actions[])Enum.GetValues(typeof(Actions)))
+            foreach (var action in (Actions[]) Enum.GetValues(typeof(Actions)))
                 _actionsComboBox.Items.Add(new ComboBoxActionItem(action.ToString(), action));
+            _actionsComboBox.SelectedIndex = 0;
         }
 
         public void OnOkayClicked(object pSender, EventArgs pEventArgs)
@@ -53,16 +46,29 @@ namespace SikuliLike.Views
 
         public void OnCancelClicked(object pSender, EventArgs pEventArgs)
         {
+            CancelClicked?.Invoke(this, pEventArgs);
             DialogResult = DialogResult.Cancel;
+            base.Close();
         }
 
         public void OnCaptureLocationClicked(object pSender, EventArgs pEventArgs)
         {
+            CaptureLocation?.Invoke(this, pEventArgs);
+        }
+
+        public void OnClickLocationClicked(object pSender, EventArgs pEventArgs)
+        {
 
         }
+
+        
+
+
 
         public event EventHandler OkayClicked;
         public event EventHandler CancelClicked;
         public event EventHandler CaptureLocation;
+
+
     }
 }

@@ -11,6 +11,7 @@ namespace SikuliLike.Views.Interfaces.Dialogs
     public interface IAddNewNodeDialogView : IOkCancelDialogView, IView<AddNewNodeDialogModel>
     {
         event EventHandler CaptureLocation;
+        event EventHandler ClickLocation;
 
         string Title { get; }
         Actions Action { get; }

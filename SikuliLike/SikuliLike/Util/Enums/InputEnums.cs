@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace SikuliLike.Util.Enums
 {
@@ -6,14 +7,15 @@ namespace SikuliLike.Util.Enums
     {
         None,
         ClickLocation,
-        DblClickLocation,
+        DoubleClickLocation,
         MatchImageAndClickLocation,
-        MatchImageAndDblClickLocation,
+        MatchImageAndDoubleClickLocation,
         DragAndDrop,
         MatchImageAndDragAndDrop,
         LeftClick,
         LeftDblClick
     }
+
 
     [Flags]
     public enum MouseEventFlags

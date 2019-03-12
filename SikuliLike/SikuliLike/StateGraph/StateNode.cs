@@ -14,7 +14,7 @@ namespace SikuliLike.StateGraph
 
         public string StateName { get; }
         public ImageLocation ImageLocation { get; }
-        public Actions PerformAction { get; set; } = Actions.DblClickLocation;
+        public Actions PerformAction { get; set; } = Actions.DoubleClickLocation;
 
         public bool Equals(StateNode pOtherNode)
         {

@@ -12,7 +12,13 @@ namespace SikuliLike.Presenters
             pView.OkayClicked += ViewOnOkayClicked;
             pView.CancelClicked += ViewOnCancelClicked;
             pView.CaptureLocation += ViewOnCaptureLocation;
+            pView.ClickLocation += ViewOnClickLocation;
             pView.Load += ViewOnLoad;
+        }
+
+        private void ViewOnClickLocation(object pSender, EventArgs pE)
+        {
+            throw new NotImplementedException();
         }
 
         private void ViewOnCaptureLocation(object pSender, EventArgs pE)
@@ -24,17 +30,10 @@ namespace SikuliLike.Presenters
         {
 
         }
-        private void BuildComboBoxItems()
-        {
-            foreach (var action in (Actions[])Enum.GetValues(typeof(Actions)))
-            {
-
-            }
-        }
 
         private void ViewOnCancelClicked(object pSender, EventArgs pE)
         {
-            throw new NotImplementedException();
+
         }
 
         private void ViewOnOkayClicked(object pSender, EventArgs pE)

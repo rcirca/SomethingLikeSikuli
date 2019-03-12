@@ -11,7 +11,7 @@ namespace SikuliLike.Automation
         {
             switch (pState.PerformAction)
             {
-                case Actions.DblClickLocation:
+                case Actions.DoubleClickLocation:
                     PerformDoubleClick(pState.ImageLocation.CenterPoint);
                     break;
                 case Actions.ClickLocation:
