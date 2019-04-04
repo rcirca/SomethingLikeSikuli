@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using SikuliLike.StateGraph;
 using SikuliLike.UI.CustomEventArgs;
 using SikuliLike.UI.Models;
@@ -20,15 +22,7 @@ namespace SikuliLike.Presenters
 
         private void ViewOnLoad(object sender, EventArgs e)
         {
-            View.Model = new SikuliLikeModel
-            {
-                StateList =
-                {
-                    new StateNode("Start", null),
-                    new StateNode("Open", null),
-                    new StateNode("Close", null)
-                }
-            };
+            View.Model = new SikuliLikeModel();
         }
 
         private void OnRemoveState(object sender, EventArgs e)
@@ -40,10 +34,13 @@ namespace SikuliLike.Presenters
         {
             using (var dialog = new AddNewNodeDialogView())
             {
+                dialog.ToggledVisibility += (pSender, pB) => { View.ToggleVisibility(pB); };
                 dialog.ShowDialog(e.ParentWindow);
                 switch (dialog.DialogResult)
                 {
-
+                    case DialogResult.OK:
+                        View.Model.AddNewState(dialog.NewStateNode);
+                        break;
                 }
             }
         }

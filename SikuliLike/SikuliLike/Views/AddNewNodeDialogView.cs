@@ -24,7 +24,7 @@ namespace SikuliLike.Views
 
         public ImageLocation ImageLocation { get; }
 
-        public StateNode NewStateNode { get; }
+        public StateNode NewStateNode { get; private set; }
 
         protected override void OnLoad(EventArgs pEventArgs)
         {
@@ -40,7 +40,9 @@ namespace SikuliLike.Views
 
         public void OnOkayClicked(object pSender, EventArgs pEventArgs)
         {
+            Model.SetTitle(_titleTextBox.Text);
             OkayClicked?.Invoke(this, pEventArgs);
+            NewStateNode = Model.StateNode;
             DialogResult = DialogResult.OK;
         }
 
@@ -58,17 +60,20 @@ namespace SikuliLike.Views
 
         public void OnClickLocationClicked(object pSender, EventArgs pEventArgs)
         {
-
+            ClickLocation?.Invoke(this, pEventArgs);
         }
 
-        
-
-
+        public void ToggleVisibility(bool pIsVisible)
+        {
+            Visible = pIsVisible;
+            ToggledVisibility?.Invoke(this, pIsVisible);
+        }
 
         public event EventHandler OkayClicked;
         public event EventHandler CancelClicked;
         public event EventHandler CaptureLocation;
+        public event EventHandler ClickLocation;
 
-
+        public event EventHandler<bool> ToggledVisibility;
     }
 }

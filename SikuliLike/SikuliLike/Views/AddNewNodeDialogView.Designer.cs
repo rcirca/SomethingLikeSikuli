@@ -103,6 +103,7 @@
             this._captureAreaButton.TabIndex = 3;
             this._captureAreaButton.Text = "Capture Area";
             this._captureAreaButton.UseVisualStyleBackColor = true;
+            this._captureAreaButton.Click += new System.EventHandler(this.OnCaptureLocationClicked);
             // 
             // _imageLocationLabel
             // 

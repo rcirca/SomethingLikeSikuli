@@ -8,7 +8,7 @@ using WinFormsMvp;
 
 namespace SikuliLike.Views.Interfaces.Dialogs
 {
-    public interface IAddNewNodeDialogView : IOkCancelDialogView, IView<AddNewNodeDialogModel>
+    public interface IAddNewNodeDialogView : IOkCancelDialogView, IView<AddNewNodeDialogModel>, IHideableView
     {
         event EventHandler CaptureLocation;
         event EventHandler ClickLocation;

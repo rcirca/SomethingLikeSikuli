@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SikuliLike.Util;
 using SikuliLike.Util.Enums;
 using SikuliLike.Views.Interfaces;
 using SikuliLike.Views.Intermediaries;
 
 namespace SikuliLike.Views
 {
-    public partial class CaptureClickLocationView : CaptureClickLocationIntermediary, ICaptureView
+    public partial class CaptureImageLocationView : CaptureImageLocationIntermediary, ICaptureView
     {
         
         #region Member Variables
@@ -41,7 +42,7 @@ namespace SikuliLike.Views
 
         #region Constructors
 
-        public CaptureClickLocationView()
+        public CaptureImageLocationView()
         {
             InitializeComponent();
             MouseDown += MousePressedDown;
@@ -52,6 +53,7 @@ namespace SikuliLike.Views
             _graphics = CreateGraphics();
         }
 
+        public ImageLocation ImageLocation { get; private set; }
         #endregion
 
         private void SetClickAction()
@@ -407,10 +409,13 @@ namespace SikuliLike.Views
                 _rectangleWidth, _rectangleHeight);
         }
 
-        public void SaveSelection(bool showCursor)
+        public void SaveScreenShot()
         {
-            //_viewModel.SaveSelectionCommand.Execute(null);
-            Close();
+            Model.CurrentTopLeft = _currentTopLeft;
+            Model.CurrentBottomRight = _currentBottomRight;
+            SaveSelection?.Invoke(this, EventArgs.Empty);
+            ImageLocation = Model.NewImageLocation;
+            DialogResult = DialogResult.OK;
         }
 
         #region Implementation
@@ -433,14 +438,23 @@ namespace SikuliLike.Views
 
         private void KeyReleased(object pSender, KeyEventArgs pKeyEventArgs)
         {
-            if (pKeyEventArgs.KeyCode.ToString() == "S" && _rectangleDrawn &&
-                (GetCursorPosition() == CursorPosition.WithinSelectionArea || GetCursorPosition() == CursorPosition.OutsideSelectionArea))
-                SaveSelection(true);
+            if (pKeyEventArgs.KeyCode == Keys.S && _rectangleDrawn &&
+                (GetCursorPosition() == CursorPosition.WithinSelectionArea ||
+                 GetCursorPosition() == CursorPosition.OutsideSelectionArea))
+            {
+                SaveScreenShot();
+            }
+
+            if (pKeyEventArgs.KeyCode == Keys.Q)
+            {
+                DialogResult = DialogResult.Abort;
+            }
+
         }
 
-        private void MouseReleased(object sender, MouseEventArgs e)
+        private void MouseReleased(object pSender, MouseEventArgs pMouseEventArgs)
         {
-            SaveSelection(false);
+            SaveScreenShot();
             _rectangleDrawn = true;
             _leftButtonDown = false;
             _currentAction = CaptureClickAction.NoClick;
@@ -450,8 +464,11 @@ namespace SikuliLike.Views
         private void MouseDoubleClicked(object sender, MouseEventArgs e)
         {
             if (_rectangleDrawn &&
-                (GetCursorPosition() == CursorPosition.WithinSelectionArea || GetCursorPosition() == CursorPosition.OutsideSelectionArea))
-                SaveSelection(false);
+                (GetCursorPosition() == CursorPosition.WithinSelectionArea
+                 || GetCursorPosition() == CursorPosition.OutsideSelectionArea))
+            {
+                SaveScreenShot();
+            }
         }
 
         private void MousePressedDown(object sender, MouseEventArgs e)
@@ -480,6 +497,9 @@ namespace SikuliLike.Views
 
             base.OnMouseClick(pMouseEventArgs);
         }
+
         #endregion
+
+        public event EventHandler SaveSelection;
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SikuliLike.UI.Models
+namespace SikuliLike.Views.Interfaces
 {
-    public class CaptureClickLocationModel
+    public interface IHideableView
     {
+        void ToggleVisibility(bool pIsVisible);
     }
 }

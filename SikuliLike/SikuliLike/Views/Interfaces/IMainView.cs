@@ -5,7 +5,7 @@ using WinFormsMvp;
 
 namespace SikuliLike.Views.Interfaces
 {
-    public interface IMainView : IView<SikuliLikeModel>
+    public interface IMainView : IView<SikuliLikeModel>, IHideableView
     {
         event EventHandler TempInitialize;
         event EventHandler<EventOpenDialogArgs> AddNewState;

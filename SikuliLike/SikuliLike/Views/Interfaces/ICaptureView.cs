@@ -8,7 +8,8 @@ using WinFormsMvp;
 
 namespace SikuliLike.Views.Interfaces
 {
-    public interface ICaptureView : IView<CaptureClickLocationModel>
+    public interface ICaptureView : IView<CaptureImageLocationModel>
     {
+        event EventHandler SaveSelection;
     }
 }

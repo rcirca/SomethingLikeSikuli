@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Forms;
+using SikuliLike.StateGraph;
 using SikuliLike.UI.CustomEventArgs;
 using SikuliLike.Views.Interfaces;
 using SikuliLike.Views.Intermediaries;
@@ -19,6 +21,11 @@ namespace SikuliLike.Views
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            RebuildList();
+        }
+
+        private void RebuildList()
+        {
             foreach (var item in Model.StateList)
             {
                 _stateListBox.Items.Add(item);
@@ -29,6 +36,24 @@ namespace SikuliLike.Views
         private void ClickedAddNewState(object pSender, EventArgs pEventArgs)
         {
             AddNewState?.Invoke(this, new EventOpenDialogArgs(this));
+            RebuildList();
+        }
+
+        public void ToggleVisibility(bool pIsVisible)
+        {
+            Visible = pIsVisible;
+        }
+
+        public void StateSelectedChanged(object pSender, EventArgs pEventArgs)
+        {
+
+            var state = _stateListBox?.SelectedItem as StateNode;
+            if (state == null)
+                return;
+
+            _previewPictureBox.ImageLocation = state.ImageLocation.ImageFilePath;
+            _previewPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+
         }
 
         //use only if we have something other than X button to close application

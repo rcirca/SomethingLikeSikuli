@@ -8,7 +8,7 @@ using WinFormsMvp.Forms;
 
 namespace SikuliLike.Views.Intermediaries
 {
-    public class CaptureClickLocationIntermediary : MvpForm<CaptureClickLocationModel>
+    public class CaptureImageLocationIntermediary : MvpForm<CaptureImageLocationModel>
     {
     }
 }

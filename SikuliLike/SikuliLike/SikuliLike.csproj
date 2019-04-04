@@ -60,11 +60,11 @@
     <Compile Include="Automation\MouseAction.cs" />
     <Compile Include="Automation\MouseController.cs" />
     <Compile Include="Presenters\AddNewNodeDialogPresenter.cs" />
-    <Compile Include="Presenters\CaptureClickLocationPresenter.cs" />
+    <Compile Include="Presenters\CaptureImageLocationPresenter.cs" />
     <Compile Include="UI\CustomControls\ComboBoxActionItem.cs" />
     <Compile Include="UI\CustomEventArgs\AddStateEventArgs.cs" />
     <Compile Include="UI\CustomEventArgs\EventOpenDialogArgs.cs" />
-    <Compile Include="UI\Models\CaptureClickLocationModel.cs" />
+    <Compile Include="UI\Models\CaptureImageLocationModel.cs" />
     <Compile Include="UI\Models\Dialogs\AddNewNodeDialogModel.cs" />
     <Compile Include="UI\Models\SikuliLikeModel.cs" />
     <Compile Include="Presenters\SikuliLikeMainPresenter.cs" />
@@ -75,18 +75,19 @@
     <Compile Include="Views\AddNewNodeDialogView.Designer.cs">
       <DependentUpon>AddNewNodeDialogView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CaptureClickLocationView.cs">
+    <Compile Include="Views\CaptureImageLocationView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CaptureClickLocationView.Designer.cs">
-      <DependentUpon>CaptureClickLocationView.cs</DependentUpon>
+    <Compile Include="Views\CaptureImageLocationView.Designer.cs">
+      <DependentUpon>CaptureImageLocationView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Interfaces\Bases\IBaseView.cs" />
     <Compile Include="Views\Interfaces\Dialogs\IAddNewNodeDialogView.cs" />
     <Compile Include="Views\Interfaces\ICaptureView.cs" />
+    <Compile Include="Views\Interfaces\IHideableView.cs" />
     <Compile Include="Views\Interfaces\IMainView.cs" />
     <Compile Include="Views\Interfaces\Bases\IOkCancelDialogView.cs" />
-    <Compile Include="Views\Intermediaries\CaptureClickLocationIntermediary.cs">
+    <Compile Include="Views\Intermediaries\CaptureImageLocationIntermediary.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Intermediaries\DialogIntermediaries\AddNewNodeDialogIntermediary.cs">
@@ -121,6 +122,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AddNewNodeDialogView.resx">
       <DependentUpon>AddNewNodeDialogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CaptureImageLocationView.resx">
+      <DependentUpon>CaptureImageLocationView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SikuliLikeMainView.resx">
       <DependentUpon>SikuliLikeMainView.cs</DependentUpon>
